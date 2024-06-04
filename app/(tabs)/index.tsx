@@ -4,51 +4,49 @@ import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+// import DoctorReg from '@/components/screens/doctorReg';
+// import PatientReg from '@/components/screens/patientReg';
+// import MyPatients from '@/components/screens/mypatients';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+// import LoginPage from '@/components/LoginScreens/LoginPage';
+import CreateAccount from '@/components/Registration/CreateAccount';
+import CreatePassword from '@/components/Registration/CreatePassword';
+import PersonalDetails from '@/components/Registration/PersonalDetails';
+import SignUp from '@/components/Registration/SignUp';
+
+const Stack = createStackNavigator();
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+
+    
+    <NavigationContainer independent={true}>
+      <Stack.Navigator initialRouteName="SignUp">
+        {/* <Stack.Screen name="LoginPage" component={LoginPage} /> */}
+        {/* <Stack.Screen name="DoctorReg" component={DoctorReg} /> */}
+        {/* <Stack.Screen name="MyPatients" component={MyPatients} /> */}
+        <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
+        <Stack.Screen name="createaccount" component={CreateAccount} />
+        <Stack.Screen name="createpassword" component={CreatePassword} options={{ headerShown: false }} />
+        <Stack.Screen name="personaldetails" component={PersonalDetails} options={{ headerShown: false }} />
+      </Stack.Navigator>
+    </NavigationContainer>
+    
+//   <ThemedView>
+// {/* <LoginPage/> */}
+// {/* <DoctorReg/> */}
+// {/* <PatientReg/> */}
+//    {/* <MyPatients/> */}
+
+// <SignUp/>
+
+
+  // </ThemedView>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   titleContainer: {
@@ -61,8 +59,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   reactLogo: {
-    height: 178,
-    width: 290,
+    height: 250,
+    width: 380,
     bottom: 0,
     left: 0,
     position: 'absolute',
